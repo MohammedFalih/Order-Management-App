@@ -59,7 +59,9 @@
             >
               <image href="../assets/check1.png" width="16" height="20"></image>
             </svg>
-            <a href="#"><span style="font-size: 20px">Checkout</span></a>
+            <a [routerLink]="['sell']"
+              ><span style="font-size: 20px">Checkout</span></a
+            >
           </div>
 
           <div class="accordion-header">
@@ -186,11 +188,15 @@
     <div class="module-nav-detail"></div>
   </soho-module-nav>
   <div class="page-container no-scroll has-module-nav-offset">
-    <app-header
-      #appHeader
-      (hamburgerClick)="toggleModuleNavDisplayMode($event)"
-    ></app-header>
-    <!--<router-outlet></router-outlet>-->
+   
   </div>
 </soho-module-nav-container>
-<div soho-personalize (changetheme)="onChangeTheme($event)"></div>
+
+<demoapp-nav-container>
+  <app-header
+    (appMenuTriggerClick)="toggleModuleNavDisplayMode($event)"
+  ></app-header>
+  <div id="maincontent" class="page-container scrollable" role="main">
+    <router-outlet></router-outlet>
+  </div>
+</demoapp-nav-container>
