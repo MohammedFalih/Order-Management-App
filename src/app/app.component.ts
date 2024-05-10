@@ -3,7 +3,8 @@ import {
   HostBinding,
   ViewEncapsulation,
   ViewChild,
-  AfterViewInit
+  AfterViewInit,
+  EventEmitter
 } from '@angular/core';
 
 import 'ids-enterprise-wc/components/ids-text/ids-text';
@@ -59,6 +60,7 @@ export class AppComponent implements AfterViewInit {
    */
   public useNewIcons = true;
 
+
   public personalizeOptions: SohoPersonalizeOptions = {};
 
   constructor(private readonly renderLoop: SohoRenderLoopService) {
@@ -82,6 +84,12 @@ export class AppComponent implements AfterViewInit {
 
     const isCurrentlyCollapsed = this.model.displayMode === 'collapsed';
     this.model.displayMode = isCurrentlyCollapsed ? 'expanded' : 'collapsed';
+  }
+
+  private hamburgerClick: EventEmitter<MouseEvent> = new EventEmitter<MouseEvent>();
+
+  toggleModuleNav(e: MouseEvent) {
+    this.hamburgerClick.next(e);
   }
 
   onChangeTheme(ev: SohoPersonalizeEvent) {
