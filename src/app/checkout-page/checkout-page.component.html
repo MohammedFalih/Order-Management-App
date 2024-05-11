@@ -1,14 +1,13 @@
-<div class="row">
-  <div class="twelve columns">
-    <h2>Sell</h2>
-    <div soho-blockgrid [selectable]="'multiple'">
+<div class="row main">
+  <div class="two-thirds column">
+    <h2 class="heading">Sell</h2>
+    <div soho-blockgrid class="block" [selectable]="'multiple'">
       <ng-container *ngFor="let item of productList; let i = index">
         <div
-          class="block is-selectable card"
+          class="block item is-selectable card"
           role="listitem"
           tabindex="0"
           attr.idx="{{ i }}"
-          style="height: 222px"
         >
           <input
             type="checkbox"
@@ -37,6 +36,32 @@
           </div>
         </div>
       </ng-container>
+    </div>
+  </div>
+  
+  <div class="one-third column cart">
+    <div class="ex">
+      <div class="cart-in">
+        <img
+          class="empty-cart"
+          src="../../assets/empty-cart.png"
+          alt="empty-cart"
+        />
+        <div class="empty-message">
+          <h2 id="cart-msg1">Your cart is empty.</h2>
+          <br />
+          <h5 id="cart-msg2">
+            Click on the products to add them <br />
+            to the sale.
+          </h5>
+        </div>
+      </div>
+      <div class="buttons">
+        <button id="del-btn">
+          <img id="del-img" src="../../assets/delete.png" alt="delete" />
+        </button>
+        <button id="pay-btn" soho-button="primary">Go to payment</button>
+      </div>
     </div>
   </div>
 </div>

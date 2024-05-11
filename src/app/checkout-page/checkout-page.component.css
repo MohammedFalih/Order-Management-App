@@ -1,0 +1,81 @@
+.heading {
+  font-size: 60px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  padding: 16px;
+  font-weight: bold;
+  margin: 8px 0px;
+}
+
+.main {
+  margin-top: 16px;
+  padding: 12px 2px;
+}
+
+.item {
+  margin: 2px;
+}
+
+.cart {
+  height: 95vh;
+  position: fixed;
+  right: 100px;
+  border: 1px solid rgba(0, 0, 0, 0.126);
+  border-radius: 24px;
+}
+
+.empty-cart {
+  height: 240px;
+  width: auto;
+}
+
+.ex {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.cart-in {
+  position: relative;
+}
+
+.empty-message {
+  margin-top: 8px;
+}
+
+#cart-msg1 {
+  font-size: 3rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+#cart-msg2 {
+  font-size: 18px;
+}
+
+.buttons {
+  position: absolute;
+  bottom: 0;
+  padding: 5px;
+  width: 90%;
+  height: 60px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+#pay-btn {
+  width: 80%;
+}
+
+#del-btn {
+    width: 20%;
+    background-color: rgba(0, 0, 0, 0.936);
+    border-radius: 8px;
+}
+
+#del-img {
+    height: 24px;
+}
