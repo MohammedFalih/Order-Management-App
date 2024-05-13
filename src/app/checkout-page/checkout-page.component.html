@@ -1,7 +1,14 @@
 <div class="row main">
   <div class="two-thirds column">
     <h2 class="heading">Sell</h2>
-    <div soho-blockgrid class="block" [selectable]="'multiple'">
+    <div
+      soho-blockgrid
+      soho-busyindicator
+      [activated]="true"
+      displayDelay="0"
+      class="block"
+      [selectable]="'multiple'"
+    >
       <ng-container *ngFor="let item of productList; let i = index">
         <div
           class="block item is-selectable card"
@@ -38,7 +45,7 @@
       </ng-container>
     </div>
   </div>
-  
+
   <div class="one-third column cart">
     <div class="ex">
       <div class="cart-in">

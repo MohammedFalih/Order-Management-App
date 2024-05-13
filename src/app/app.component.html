@@ -57,7 +57,7 @@
               aria-hidden="true"
               role="presentation"
             >
-              <image href="../assets/check1.png" width="16" height="20"></image>
+              <image [routerLink]="['sell']" href="../assets/check1.png" width="16" height="20"></image>
             </svg>
             <a [routerLink]="['sell']"
               ><span style="font-size: 20px">Checkout</span></a
@@ -73,7 +73,7 @@
             >
               <image href="../assets/orders.png" width="16" height="20"></image>
             </svg>
-            <a href="#"><span style="font-size: 20px">Orders</span></a>
+            <a><span style="font-size: 20px">Orders</span></a>
           </div>
 
           <div class="accordion-header">
@@ -94,9 +94,9 @@
               aria-hidden="true"
               role="presentation"
             >
-              <image href="../assets/cart.png" width="16" height="20"></image>
+              <image [routerLink]="['product']" href="../assets/cart.png" width="16" height="20"></image>
             </svg>
-            <a href="#"><span style="font-size: 20px">Online Catalog</span></a>
+            <a [routerLink]="['product']"><span style="font-size: 20px">Online Catalog</span></a>
           </div>
 
           <div class="accordion-header">

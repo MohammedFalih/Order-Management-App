@@ -1,0 +1,15 @@
+<div class="row top-padding">
+  <div class="header">
+    <h2 class="title">Products</h2>
+  </div>
+  <div class="twelve columns demo" role="main">
+    <div
+      soho-datagrid
+      *ngIf="gridOptions"
+      [gridOptions]="gridOptions"
+      [paging]="true"
+      [pagesize]="6"
+      [fixedRowHeight]="120"
+    ></div>
+  </div>
+</div>

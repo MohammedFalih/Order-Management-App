@@ -11,10 +11,12 @@ import { PersonalizeMenuComponent } from './personalize-menu/personalize-menu.co
 import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TruncatePipe } from "../shared/truncate.pipe";
+import { ProductComponent } from './product/product.component';
 
 const routes: Routes = [
 
-  { path: 'sell', component: CheckoutPageComponent }
+    { path: 'sell', component: CheckoutPageComponent },
+    { path: 'product', component: ProductComponent },
 ]
 
 @NgModule({
@@ -23,7 +25,8 @@ const routes: Routes = [
         HeaderComponent,
         PersonalizeMenuComponent,
         CheckoutPageComponent,
-        TruncatePipe
+        TruncatePipe,
+        ProductComponent
     ],
     providers: [
         {
