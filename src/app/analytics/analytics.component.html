@@ -1,1 +1,138 @@
-<p>analytics works!</p>
+<div
+  class="row"
+  style="min-width: 1500px; margin-left: 350px; padding: 30px 12px"
+>
+  <div class="one-third column">
+    <div class="widget" style="height: 90vh">
+      <div class="widget-header">
+        <h1 class="widget-title">Analytics</h1>
+      </div>
+      <div class="widget-content" style="height: 90%">
+        <soho-listview>
+          <li soho-listview-item class="list">
+            <div
+              class="revenue"
+              style="display: flex; justify-content: space-between"
+            >
+              <div class="text">
+                <h2>REVENUE</h2>
+                <br />
+                <h1>R$ 2.335,04</h1>
+                <p>Best Month June</p>
+              </div>
+              <div
+                soho-sparkline
+                [dataset]="revenue"
+                [type]="'sparkline'"
+                style="width: 220px; height: 120px; padding: 40px 0px"
+              ></div>
+            </div>
+          </li>
+          <li soho-listview-item class="list">
+            <div
+              class="sales"
+              style="display: flex; justify-content: space-between"
+            >
+              <div class="text">
+                <h2>SALES</h2>
+                <br />
+                <h1>73</h1>
+                <p>Best Month June</p>
+              </div>
+              <div
+                soho-sparkline
+                [dataset]="sales"
+                [type]="'sparkline'"
+                style="width: 220px; height: 120px; padding: 40px 0px"
+              ></div>
+            </div>
+          </li>
+          <li soho-listview-item class="list">
+            <div
+              class="average"
+              style="display: flex; justify-content: space-between"
+            >
+              <div class="text">
+                <h2>AVERAGE TICKET SIZE</h2>
+                <br />
+                <h1>R$ 31,99</h1>
+                <p>Best Month June</p>
+              </div>
+              <div
+                soho-sparkline
+                [dataset]="average"
+                [type]="'sparkline'"
+                style="width: 220px; height: 120px; padding: 40px 0px"
+              ></div>
+            </div>
+          </li>
+          <li soho-listview-item class="list">
+            <div
+              class="profits"
+              style="display: flex; justify-content: space-between"
+            >
+              <div class="text">
+                <h2>PROFITS</h2>
+                <br />
+                <h1>R$ 394,79</h1>
+                <p>Best Month June</p>
+              </div>
+              <div
+                soho-sparkline
+                [dataset]="profit"
+                [type]="'sparkline'"
+                style="width: 220px; height: 120px; padding: 40px 0px"
+              ></div>
+            </div>
+          </li>
+          <li soho-listview-item class="list">
+            <div
+              class="sales"
+              style="display: flex; justify-content: space-between"
+            >
+              <div class="text">
+                <h2>SALES TAX</h2>
+                <br />
+                <h1>R$ 615,50</h1>
+                <p>Best Month June</p>
+              </div>
+              <div
+                soho-sparkline
+                [dataset]="salesTax"
+                [type]="'sparkline'"
+                style="width: 220px; height: 120px; padding: 40px 0px"
+              ></div>
+            </div>
+          </li>
+        </soho-listview>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-thirds column" style="width: 950px">
+    <div class="widget">
+      <div class="widget-header">
+        <h2 class="widget-title" style="font-weight: bold; font-size: 28px">
+          Revenue
+        </h2>
+      </div>
+      <div class="widget-content">
+        <div
+          soho-column
+          [dataset]="columnData"
+          [yAxis]="yAxis"
+          [type]="'column'"
+        ></div>
+      </div>
+    </div>
+    <div class="widget">
+      <div class="widget-content" style="height: 400px">
+        <div
+          soho-datagrid
+          *ngIf="gridOptions"
+          [gridOptions]="gridOptions"
+        ></div>
+      </div>
+    </div>
+  </div>
+</div>
