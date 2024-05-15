@@ -47,33 +47,36 @@ export class CheckoutPageComponent implements OnInit {
     } else {
       this.selectedProduct.push(item);
     }
-
-    let totalPrice = 0;
-    this.selectedProduct.forEach((product: any) => {
-      totalPrice += parseFloat(product.price.replace('$', '')) * product.quantity;
-    })
-
-    let totalQuantity = this.selectedProduct.reduce((sum, product) => sum + Number(product.quantity), 0)
-
-    this.totalPrice = totalPrice;
-    this.totalQuantity = totalQuantity;
-
-    console.log(this.totalPrice);
-    console.log(this.totalQuantity)
-
-
+    this.calculateTotals()
     // console.log('Selected products:', this.selectedProduct);
     // console.log('Change event data:', event);
     // console.log('Item:', item);
     // console.log('Updated item:', item);
   }
 
+  calculateTotals() {
+    let totalPrice = 0;
+    let totalQuantity = 0;
+
+    this.selectedProduct.forEach((product: any) => {
+      totalPrice += parseFloat(product.price.replace('$', '')) * product.quantity;
+      totalQuantity += Number(product.quantity);
+    });
+
+    this.totalPrice = totalPrice;
+    this.totalQuantity = totalQuantity;
+
+    console.log(this.totalPrice);
+    console.log(this.totalQuantity);
+  }
+
   removeItem(product: any) {
-    this.selectedProduct.map((a: any, index: any) => {
-      if (product.id == a.id) {
-        this.selectedProduct.splice(index, 1)
-      }
-    })
+    const index = this.selectedProduct.findIndex((p: any) => p.id === product.id);
+    if (index != -1) {
+      this.selectedProduct[index].quantity = 0;
+      this.selectedProduct.splice(index, 1);
+      this.calculateTotals()
+    }
   }
 
 }

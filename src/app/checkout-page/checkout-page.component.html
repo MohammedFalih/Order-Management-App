@@ -18,7 +18,7 @@
           attr.idx="{{ i }}"
           id="{{ i }}"
         >
-          <input soho-spinbox min="0" max="8" (change)="change($event, item)" />
+          <input soho-spinbox min="0" max="8" [(ngModel)]="item.quantity" (change)="change($event, item)" />
           <label for="checkbox{{ i }}" class="checkbox-label">
             <span class="audible">Select</span>
           </label>

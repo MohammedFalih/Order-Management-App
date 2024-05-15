@@ -12,6 +12,7 @@ import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TruncatePipe } from "../shared/truncate.pipe";
 import { ProductComponent } from './product/product.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
 
@@ -44,6 +45,7 @@ const routes: Routes = [
         SohoLocaleInitializerModule,
         SohoComponentsModule,
         HttpClientModule,
+        FormsModule
     ]
 })
 export class AppModule { }
