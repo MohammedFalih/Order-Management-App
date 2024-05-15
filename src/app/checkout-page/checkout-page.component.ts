@@ -79,4 +79,11 @@ export class CheckoutPageComponent implements OnInit {
     }
   }
 
+  clearItems() {
+   this.selectedProduct.forEach((product) =>{
+    product.quantity = 0;
+   })
+   this.selectedProduct = []
+  }
+
 }

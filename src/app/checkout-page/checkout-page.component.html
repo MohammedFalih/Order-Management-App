@@ -7,8 +7,7 @@
       [activated]="true"
       displayDelay="0"
       class="block"
-      [selectable]="'multiple'"
-      style="min-height: 100vh;"
+           style="min-height: 100vh;"
     >
       <ng-container *ngFor="let item of productList; let i = index">
         <div
@@ -105,7 +104,7 @@
           </div>
           <div class="buttons">
             <button id="del-btn">
-              <img id="del-img" src="../../assets/delete.png" alt="delete" />
+              <img id="del-img" (click)="clearItems()" src="../../assets/delete.png" alt="delete" />
             </button>
             <button id="pay-btn" soho-button="primary">Go to payment</button>
           </div>
