@@ -21,6 +21,7 @@
   right: 100px;
   border: 1px solid rgba(0, 0, 0, 0.126);
   border-radius: 24px;
+  padding: 8px;
 }
 
 .empty-cart {
@@ -58,12 +59,13 @@
 .buttons {
   position: absolute;
   bottom: 0;
-  padding: 5px;
+  padding: 6px 12px;
   width: 90%;
   height: 60px;
   margin-bottom: 8px;
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 #pay-btn {
@@ -71,11 +73,59 @@
 }
 
 #del-btn {
-    width: 20%;
-    background-color: rgba(0, 0, 0, 0.936);
-    border-radius: 8px;
+  width: 20%;
+  border-radius: 8px;
+  background-color: darkgrey;
 }
 
 #del-img {
-    height: 24px;
+  height: 24px;
+}
+
+.cart-item {
+  width: 100%;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.text > #head {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.one {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  gap: 24px;
+}
+
+.quantity {
+  margin: 0px 16px;
+}
+
+.quantity-price {
+  display: flex;
+  justify-content: space-between;
+  margin: 0px 14px;
+  width: 90%;
+  align-items: center;
+  padding: 4px 8px;
+}
+.total {
+  margin: 8px 14px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 50px;
+}
+.listing {
+  height: 80%;
+  align-content: end;
+  margin: 8px;
 }

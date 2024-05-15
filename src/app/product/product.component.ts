@@ -74,7 +74,7 @@ export const EDITORS_COLUMNS: any[] = [
     editor: Soho.Editors.Checkbox,
     align: 'center',
     switch: true
-  },
+  }
 ];
 
 @Component({

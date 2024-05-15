@@ -8,6 +8,7 @@
       displayDelay="0"
       class="block"
       [selectable]="'multiple'"
+      style="min-height: 100vh;"
     >
       <ng-container *ngFor="let item of productList; let i = index">
         <div
@@ -15,16 +16,9 @@
           role="listitem"
           tabindex="0"
           attr.idx="{{ i }}"
+          id="{{ i }}"
         >
-          <input
-            type="checkbox"
-            aria-hidden="true"
-            tabindex="0"
-            role="presentation"
-            class="checkbox"
-            id="checkbox{{ i }}"
-            attr.idx="{{ i }}"
-          />
+          <input soho-spinbox min="0" max="8" (change)="change($event, item)" />
           <label for="checkbox{{ i }}" class="checkbox-label">
             <span class="audible">Select</span>
           </label>
@@ -35,11 +29,11 @@
             alt="placeholder-image"
           />
           <div style="padding: 4px" [align]="'left'">
-            <span style="font-weight: bold" class="title">{{
-              item.title | truncate
-            }}</span>
+            <span style="font-weight: bold" class="title">
+              {{ item.title }}</span
+            >
             <br /><br />
-            <span class="sub-title">{{ item.price | currency }}</span>
+            <span class="sub-title">{{ item.price }}</span>
           </div>
         </div>
       </ng-container>
@@ -47,7 +41,7 @@
   </div>
 
   <div class="one-third column cart">
-    <div class="ex">
+    <div class="ex" *ngIf="selectedProduct.length === 0">
       <div class="cart-in">
         <img
           class="empty-cart"
@@ -63,11 +57,59 @@
           </h5>
         </div>
       </div>
-      <div class="buttons">
-        <button id="del-btn">
-          <img id="del-img" src="../../assets/delete.png" alt="delete" />
-        </button>
-        <button id="pay-btn" soho-button="primary">Go to payment</button>
+    </div>
+    <div class="cart-item" *ngIf="selectedProduct.length > 0" >
+      <div class="card" style="height: 470px">
+        <div class="card-header">
+          <h2 class="card-title">Selected Items</h2>
+        </div>
+        <div class="card-content" style="height: 420px">
+          <soho-listview>
+            <li
+              soho-listview-item
+              *ngFor="let item of selectedProduct"
+              class="list"
+            >
+              <div class="one">
+                <div class="quantity">
+                  <p>{{ item.quantity }}</p>
+                </div>
+                <div class="text">
+                  <p id="head" soho-listview-header>{{ item.title }}</p>
+                  <p soho-listview-subheader>
+                    <span soho-tag="primary">{{ item.price }}</span>
+                  </p>
+                </div>
+              </div>
+              <div class="button">
+                <button
+                  soho-button="icon"
+                  icon="delete"
+                  (click)="removeItem(item)"
+                ></button>
+              </div>
+            </li>
+          </soho-listview>
+        </div>
+      </div>
+      <div>
+        <soho-card>
+          <div class="listing">
+            <div class="quantity-price">
+              <p style="font-size: 22px; font-weight: bold;">{{totalQuantity}} items</p>
+              <p style="font-size: 22px; font-weight: bold;">Sub-Total: {{totalPrice  | currency}}</p>
+            </div>
+            <div class="total">
+              <h2 style="margin-right: 42px; font-size: 26px;font-weight: bolder;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Total: {{totalPrice | currency}}</h2>
+            </div>
+          </div>
+          <div class="buttons">
+            <button id="del-btn">
+              <img id="del-img" src="../../assets/delete.png" alt="delete" />
+            </button>
+            <button id="pay-btn" soho-button="primary">Go to payment</button>
+          </div>
+        </soho-card>
       </div>
     </div>
   </div>

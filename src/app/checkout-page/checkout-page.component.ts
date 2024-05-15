@@ -2,6 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { ApiServiceService } from '../services/api-service.service';
 import { OnInit } from '@angular/core';
 import { SohoBusyIndicatorDirective } from 'ids-enterprise-ng';
+import { DATA } from './products.data';
+import { SohoSpinboxComponent } from 'ids-enterprise-ng';
 
 @Component({
   selector: 'app-checkout-page',
@@ -11,8 +13,12 @@ import { SohoBusyIndicatorDirective } from 'ids-enterprise-ng';
 export class CheckoutPageComponent implements OnInit {
 
   @ViewChild(SohoBusyIndicatorDirective, { static: true }) busyIndicator?: SohoBusyIndicatorDirective;
+  @ViewChild(SohoSpinboxComponent, { static: true }) spinbox?: SohoSpinboxComponent;
 
   productList: any;
+  selectedProduct: any[] = [];
+  totalPrice?: number;
+  totalQuantity?: number;
 
   constructor(private products: ApiServiceService) {
 
@@ -22,11 +28,52 @@ export class CheckoutPageComponent implements OnInit {
   }
 
   private displayProducts() {
-    this.products.getProducts()
-      .subscribe((res) => {
-        this.busyIndicator?.open();
-        this.productList = res;
-        this.busyIndicator?.close(true)
-      })
+    this.busyIndicator?.open();
+
+    setTimeout(() => {
+      this.productList = DATA;
+      this.busyIndicator?.close(true);
+    }, 3000);
   }
+
+  change(event: SohoSpinboxEvent, item: any) {
+
+    item.quantity = event;
+
+    const exist = this.selectedProduct.find((p: any) => p.id === item.id);
+
+    if (exist) {
+      exist.quantity = item.quantity;
+    } else {
+      this.selectedProduct.push(item);
+    }
+
+    let totalPrice = 0;
+    this.selectedProduct.forEach((product: any) => {
+      totalPrice += parseFloat(product.price.replace('$', '')) * product.quantity;
+    })
+
+    let totalQuantity = this.selectedProduct.reduce((sum, product) => sum + Number(product.quantity), 0)
+
+    this.totalPrice = totalPrice;
+    this.totalQuantity = totalQuantity;
+
+    console.log(this.totalPrice);
+    console.log(this.totalQuantity)
+
+
+    // console.log('Selected products:', this.selectedProduct);
+    // console.log('Change event data:', event);
+    // console.log('Item:', item);
+    // console.log('Updated item:', item);
+  }
+
+  removeItem(product: any) {
+    this.selectedProduct.map((a: any, index: any) => {
+      if (product.id == a.id) {
+        this.selectedProduct.splice(index, 1)
+      }
+    })
+  }
+
 }
