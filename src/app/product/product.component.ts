@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SohoDataGridComponent } from 'ids-enterprise-ng';
 import { ApiServiceService } from '../services/api-service.service';
-import { SohoBusyIndicatorDirective } from 'ids-enterprise-ng';
 
 export const EDITORS_COLUMNS: any[] = [
   {
@@ -86,7 +85,6 @@ export const EDITORS_COLUMNS: any[] = [
 export class ProductComponent implements OnInit {
 
   @ViewChild(SohoDataGridComponent) sohoDataGridComponent?: SohoDataGridComponent;
-  @ViewChild(SohoBusyIndicatorDirective, { static: true }) busyIndicator?: SohoBusyIndicatorDirective;
 
   gridOptions: any = null;
   productsList: any;
