@@ -4,6 +4,7 @@ import { OnInit } from '@angular/core';
 import { SohoBusyIndicatorDirective } from 'ids-enterprise-ng';
 import { DATA } from './products.data';
 import { SohoSpinboxComponent } from 'ids-enterprise-ng';
+import { Dataset } from '../customers/customers.data';
 
 @Component({
   selector: 'app-checkout-page',
@@ -19,6 +20,8 @@ export class CheckoutPageComponent implements OnInit {
   selectedProduct: any[] = [];
   totalPrice?: number;
   totalQuantity?: number;
+  customers = Dataset;
+  selectedCustomer: string = '';
 
   constructor(private products: ApiServiceService) {
 
@@ -84,6 +87,10 @@ export class CheckoutPageComponent implements OnInit {
     product.quantity = 0;
    })
    this.selectedProduct = []
+  }
+
+  onSelected(name: string) {
+    this.selectedCustomer = name;
   }
 
 }

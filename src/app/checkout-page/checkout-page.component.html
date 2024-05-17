@@ -7,7 +7,7 @@
       [activated]="true"
       displayDelay="0"
       class="block"
-           style="min-height: 100vh;"
+      style="min-height: 100vh"
     >
       <ng-container *ngFor="let item of productList; let i = index">
         <div
@@ -17,7 +17,13 @@
           attr.idx="{{ i }}"
           id="{{ i }}"
         >
-          <input soho-spinbox min="0" max="8" [(ngModel)]="item.quantity" (change)="change($event, item)" />
+          <input
+            soho-spinbox
+            min="0"
+            max="8"
+            [(ngModel)]="item.quantity"
+            (change)="change($event, item)"
+          />
           <label for="checkbox{{ i }}" class="checkbox-label">
             <span class="audible">Select</span>
           </label>
@@ -40,6 +46,22 @@
   </div>
 
   <div class="one-third column cart">
+    <div class="twelve columns">
+      <soho-toolbar-flex>
+        <soho-toolbar-flex-section [isTitle]="true">
+         
+        </soho-toolbar-flex-section>
+
+        <soho-toolbar-flex-section [isButtonSet]="true">
+          <button soho-menu-button >
+            <span>{{selectedCustomer.length>0 ? selectedCustomer : 'Select Customer'}}</span>
+          </button>
+          <ul class="popupmenu">
+            <li *ngFor="let user of customers"><a (click)="onSelected(user.name)" href="#">{{user.name}}</a></li>
+          </ul>
+        </soho-toolbar-flex-section>
+      </soho-toolbar-flex>
+    </div>
     <div class="ex" *ngIf="selectedProduct.length === 0">
       <div class="cart-in">
         <img
@@ -57,8 +79,8 @@
         </div>
       </div>
     </div>
-    <div class="cart-item" *ngIf="selectedProduct.length > 0" >
-      <div class="card" style="height: 470px">
+    <div class="cart-item" *ngIf="selectedProduct.length > 0">
+      <div class="card" style="height: 470px; margin-top: 40px;">
         <div class="card-header">
           <h2 class="card-title">Selected Items</h2>
         </div>
@@ -95,16 +117,34 @@
         <soho-card>
           <div class="listing">
             <div class="quantity-price">
-              <p style="font-size: 22px; font-weight: bold;">{{totalQuantity}} items</p>
-              <p style="font-size: 22px; font-weight: bold;">Sub-Total: {{totalPrice  | currency}}</p>
+              <p style="font-size: 22px; font-weight: bold">
+                {{ totalQuantity }} items
+              </p>
+              <p style="font-size: 22px; font-weight: bold">
+                Sub-Total: {{ totalPrice | currency }}
+              </p>
             </div>
             <div class="total">
-              <h2 style="margin-right: 42px; font-size: 26px;font-weight: bolder;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Total: {{totalPrice | currency}}</h2>
+              <h2
+                style="
+                  margin-right: 42px;
+                  font-size: 26px;
+                  font-weight: bolder;
+                  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+                "
+              >
+                Total: {{ totalPrice | currency }}
+              </h2>
             </div>
           </div>
           <div class="buttons">
             <button id="del-btn">
-              <img id="del-img" (click)="clearItems()" src="../../assets/delete.png" alt="delete" />
+              <img
+                id="del-img"
+                (click)="clearItems()"
+                src="../../assets/delete.png"
+                alt="delete"
+              />
             </button>
             <button id="pay-btn" soho-button="primary">Go to payment</button>
           </div>
