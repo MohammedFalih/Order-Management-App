@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { CustomersComponent } from './customers/customers.component';
 import { UserInfoComponent } from './user-info/user-info.component';
+import { FinanceComponent } from './finance/finance.component';
 
 const routes: Routes = [
 
@@ -24,6 +25,7 @@ const routes: Routes = [
     { path: 'analytics', component: AnalyticsComponent },
     { path: 'customers', component: CustomersComponent },
     { path: 'user-info/:name', component: UserInfoComponent },
+    { path: 'finance', component: FinanceComponent },
 ]
 
 @NgModule({
@@ -36,7 +38,8 @@ const routes: Routes = [
         ProductComponent,
         AnalyticsComponent,
         CustomersComponent,
-        UserInfoComponent
+        UserInfoComponent,
+        FinanceComponent
     ],
     providers: [
         {

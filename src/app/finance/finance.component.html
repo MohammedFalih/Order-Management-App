@@ -1,0 +1,144 @@
+<div class="column">
+  <div class="row top-padding main">
+    <div class="heading">
+      <h1 class="font-bold text-7xl font-sans">Finances</h1>
+    </div>
+    <div class="full-width scrollable-flex full-height">
+      <div soho-toolbar-flex class="ml-10 bg-slate-200 h-28 rounded-xl">
+        <soho-toolbar-flex-section class="ml-10" [isSearch]="true">
+          <input
+            soho-toolbar-flex-searchfield
+            placeholder="Search..."
+            [clearable]="true"
+          />
+        </soho-toolbar-flex-section>
+
+        <soho-toolbar-flex-section class="ml-0" [isButtonSet]="true">
+          <button soho-button="secondary" icon="filter">Filter</button>
+        </soho-toolbar-flex-section>
+
+        <soho-toolbar-flex-button class="mr-10">
+          <button
+            soho-button="primary-destructive"
+            (click)="showSidebar()"
+            class="h-16"
+            icon="add"
+          >
+            Expense
+          </button>
+        </soho-toolbar-flex-button>
+      </div>
+      <div class="twelve columns demo" style="margin-top: 20px" role="main">
+        <section class="scrollable contained-scrolling-right-bottom">
+          <div
+            soho-datagrid
+            clic
+            fixedRowHeight="85"
+            [gridOptions]="options"
+            [isList]="true"
+          ></div>
+        </section>
+      </div>
+    </div>
+    <div class="side-bar" *ngIf="displaySidebar">
+      <div class="flex my-5 justify-between px-6">
+        <h2 class="text-4xl">Add Expense</h2>
+        <button (click)="showSidebar()">
+          <img class="h-6" src="../../assets/close.png" />
+        </button>
+      </div>
+      <div class="amount w-full flex justify-center mt-10 h-20">
+        <div class="radio-input">
+          <label>
+            <input
+              checked
+              type="radio"
+              id="value-1"
+              name="value-radio"
+              value="value-1"
+            />
+            <span class="text-4xl">Payable</span>
+          </label>
+          <label>
+            <input
+              type="radio"
+              id="value-2"
+              name="value-radio"
+              value="value-2"
+            />
+            <span class="text-4xl">Paid</span>
+          </label>
+          <span class="selection"></span>
+        </div>
+      </div>
+      <div soho-form-compact class="form-compact-container banner-detail px-4">
+        <div
+          class="columns h-44 top-padding flex flex-col items-center justify-center mt-8 p-4"
+        >
+          <label
+            class="mb-2 text-blue-950 text-4xl font-bold bg-transparent"
+            for="value"
+            >Value</label
+          >
+          <input
+            class="border-none text-center text-6xl placeholder:text-6xl h-28 bg-transparent outline-none focus:border-none focus:outline-none p-2 text-blue-950"
+            soho-input
+            id="value"
+            placeholder="$ 0,00"
+            [(ngModel)]="value"
+          />
+        </div>
+        <div class="flex mt-4">
+          <div class="columns top-padding">
+            <label for="due-date">Due Date</label>
+            <input type="date" [(ngModel)]="dueDate"/>
+          </div>
+          <div class="columns top-padding">
+            <label for="category">Categories</label>
+            <select [(ngModel)]="category" soho-dropdown name="placeholder-dropdown">
+              <option value="select" selected>Select Category</option>
+              <option  *ngFor="let option of Data">{{ option.category }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="details">
+          <soho-card class="h-full overflow-hidden">
+            <soho-card-header>
+              <div class="learn flex justify-center w-full mt-3 font-bold">
+                <h2 class="widget-title text-center">Learn more</h2>
+              </div>
+            </soho-card-header>
+            <div class="card-content min-h-full">
+              <div class="flex justify-center">
+                <div class="input mt-2">
+                  <label soho-label class="text-black text-3xl mt-3">Expense name</label>
+                  <input type="text" soho-input [(ngModel)]="expenseName" />
+                  <label soho-label class="text-black text-3xl mt-8">Supplier</label>
+                  <select  [(ngModel)]="supplier" soho-dropdown name="supplier" id="supplier">
+                    <option value="select" selected>Select supplier</option>
+                    <option *ngFor="let option of Data">{{option.supplier}}</option>
+                  </select>
+                  <label for="textarea2" soho-label class="text-black text-3xl mt-2">Notes</label>
+                  <textarea 
+                    soho-textarea
+                    name="textarea2" 
+                    id="textarea2" 
+                    >
+                  </textarea>
+                  <div class="columns top-padding mt-4">
+                    <label for="due-date">Refers to</label>
+                    <input type="date" />
+                  </div>
+                </div>
+              </div>
+              <div class="button flex justify-end mt-36 px-8 h-20">
+                <button class="mr-8" soho-button="secondary">Cancel</button>
+                <button  soho-button="primary" (click)="addExpense()">Add Expense</button>
+              </div>
+            </div>
+          </soho-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
