@@ -57,7 +57,12 @@
               aria-hidden="true"
               role="presentation"
             >
-              <image [routerLink]="['sell']" href="../assets/check1.png" width="16" height="20"></image>
+              <image
+                [routerLink]="['sell']"
+                href="../assets/check1.png"
+                width="16"
+                height="20"
+              ></image>
             </svg>
             <a [routerLink]="['sell']"
               ><span style="font-size: 20px">Checkout</span></a
@@ -83,9 +88,16 @@
               aria-hidden="true"
               role="presentation"
             >
-              <image href="../assets/menu.png" width="18" height="20"></image>
+              <image
+                [routerLink]="['product']"
+                href="../assets/menu.png"
+                width="18"
+                height="20"
+              ></image>
             </svg>
-            <a href="#"><span style="font-size: 20px">Products</span></a>
+            <a [routerLink]="['product']" href="#"
+              ><span style="font-size: 20px">Products</span></a
+            >
           </div>
           <div class="accordion-header">
             <svg
@@ -94,9 +106,9 @@
               aria-hidden="true"
               role="presentation"
             >
-              <image [routerLink]="['product']" href="../assets/cart.png" width="16" height="20"></image>
+              <image href="../assets/cart.png" width="16" height="20"></image>
             </svg>
-            <a [routerLink]="['product']"><span style="font-size: 20px">Online Catalog</span></a>
+            <a><span style="font-size: 20px">Online Catalog</span></a>
           </div>
 
           <div class="accordion-header">
@@ -106,9 +118,9 @@
               aria-hidden="true"
               role="presentation"
             >
-              <image href="../assets/user.png" width="16" height="20"></image>
+              <image [routerLink]="['customers']" href="../assets/user.png" width="16" height="20"></image>
             </svg>
-            <a href="#"><span style="font-size: 20px">Customers</span></a>
+            <a [routerLink]="['customers']" href="#"><span style="font-size: 20px">Customers</span></a>
           </div>
 
           <div class="accordion-header">
@@ -137,7 +149,9 @@
                 [routerLink]="['analytics']"
               ></image>
             </svg>
-            <a [routerLink]="['analytics']"><span style="font-size: 20px">Analytics</span></a>
+            <a [routerLink]="['analytics']"
+              ><span style="font-size: 20px">Analytics</span></a
+            >
           </div>
 
           <div class="accordion-header">
@@ -149,7 +163,7 @@
             >
               <image href="../assets/users.png" width="16" height="20"></image>
             </svg>
-            <a ><span style="font-size: 20px">Users</span></a>
+            <a><span style="font-size: 20px">Users</span></a>
           </div>
 
           <div class="accordion-header">
@@ -165,7 +179,7 @@
                 height="20"
               ></image>
             </svg>
-            <a ><span style="font-size: 20px">Settings</span></a>
+            <a><span style="font-size: 20px">Settings</span></a>
           </div>
 
           <div class="accordion-header">
@@ -181,7 +195,7 @@
                 height="20"
               ></image>
             </svg>
-            <a ><span style="font-size: 20px">Help</span></a>
+            <a><span style="font-size: 20px">Help</span></a>
           </div>
         </div>
       </soho-accordion>

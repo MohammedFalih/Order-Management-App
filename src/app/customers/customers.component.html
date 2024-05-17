@@ -1,1 +1,10 @@
-<p>customers works!</p>
+<div class="row top-padding">
+  <div class="header">
+    <h2 class="title">Customers</h2>
+  </div>
+  <div class="twelve columns demo" style="margin-top: 20px" role="main">
+    <section class="scrollable contained-scrolling-right-bottom">
+      <div soho-datagrid (rowClicked)="onRowActivated($event)" clic fixedRowHeight="85" [gridOptions]="options" [isList]="true"></div>
+    </section>
+  </div>
+</div>

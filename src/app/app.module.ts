@@ -14,12 +14,16 @@ import { TruncatePipe } from "../shared/truncate.pipe";
 import { ProductComponent } from './product/product.component';
 import { FormsModule } from '@angular/forms';
 import { AnalyticsComponent } from './analytics/analytics.component';
+import { CustomersComponent } from './customers/customers.component';
+import { UserInfoComponent } from './user-info/user-info.component';
 
 const routes: Routes = [
 
     { path: 'sell', component: CheckoutPageComponent },
     { path: 'product', component: ProductComponent },
-    { path: 'analytics', component: AnalyticsComponent }
+    { path: 'analytics', component: AnalyticsComponent },
+    { path: 'customers', component: CustomersComponent },
+    { path: 'user-info/:name', component: UserInfoComponent },
 ]
 
 @NgModule({
@@ -30,7 +34,9 @@ const routes: Routes = [
         CheckoutPageComponent,
         TruncatePipe,
         ProductComponent,
-        AnalyticsComponent
+        AnalyticsComponent,
+        CustomersComponent,
+        UserInfoComponent
     ],
     providers: [
         {
