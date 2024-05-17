@@ -1,0 +1,81 @@
+<div class="row">
+  <div class="twelve columns">
+    <div class="head">
+      <img
+        style="height: 24px; width: 24px;"
+        src="../../assets/back.png"
+        alt="back"
+        [routerLink]="['/customers']"
+      />
+      <h2 class="title">
+        {{ user.name }}
+      </h2>
+    </div>
+  </div>
+</div>
+
+<div class="row top-padding">
+  <div class="twelve columns">
+    <div soho-tabs>
+      <div soho-tab-list-container>
+        <ul soho-tab-list>
+          <li soho-tab selected="true">
+            <a soho-tab-title tabId="tabs-normal-info">Info</a>
+          </li>
+          <li soho-tab>
+            <a soho-tab-title tabId="tabs-normal-sales">Sales</a>
+          </li>
+          <li soho-tab>
+            <a soho-tab-title tabId="tabs-normal-orders">Orders</a>
+          </li>
+          <li soho-tab>
+            <a soho-tab-title tabId="tabs-normal-account">Account</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div soho-tab-panel-container>
+      <div soho-tab-panel tabId="tabs-normal-info">
+        <div class="columns top-padding">
+          <div class="top-padding">
+            <div class="image">
+              <img
+                class="round"
+                src="{{ user.image }}"
+                alt="{{ user.name }} image"
+              />
+            </div>
+          </div>
+          <div class="logo">
+            <img class="icon" src="../../assets/whatsapp.png" alt="" />
+            <img class="icon" src="../../assets/phone.png" alt="" />
+            <img class="icon" src="../../assets/mail.png" alt="" />
+            <img class="icon" src="../../assets/location.png" alt="" />
+          </div>
+        </div>
+        <div soho-form-compact class="form-compact-container banner-detail">
+          <div class="columns top-padding" style="margin-top: 14px">
+            <label for="field-01">Name</label>
+            <input soho-input [value]="user.name" id="name" />
+          </div>
+          <div class="columns top-padding" style="margin-top: 14px">
+            <label for="field-02">Mobile #</label>
+            <input soho-input [value]="user.phone" id="mobile" />
+          </div>
+          <div class="columns top-padding" style="margin-top: 14px">
+            <label for="field-02">Address Line 1 (optional)</label>
+            <input soho-input id="address1" />
+          </div>
+          <div class="columns top-padding" style="margin-top: 14px">
+            <label for="field-02">Address Line 2 (optional)</label>
+            <input soho-input id="address2" />
+          </div>
+          <div class="columns top-padding button">
+            <button soho-button="secondary" (click)="save()" style="width: 95%">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

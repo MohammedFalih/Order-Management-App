@@ -1,0 +1,43 @@
+.head {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.title {
+    font-size: 28px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.round {
+  height: 200px;
+  width: 200px;
+  border-radius: 100px;
+}
+
+.logo {
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.icon {
+  height: 40px;
+  width: auto;
+  margin-right: 20px;
+}
+
+.button {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;  
+}
