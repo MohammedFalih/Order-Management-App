@@ -29,9 +29,9 @@ export class FinanceComponent implements OnInit {
 
   addExpense() {
 
-    this.dataGrid?.addRow({ paid: this.paid, date: this.dueDate, value: this.value, expense: this.expenseName, supplier: this.supplier, category: this.category }, 'top');
+    this.dataGrid?.addRow({ paid: this.paid, date: this.dueDate, value: this.value, expense: this.expenseName, supplier: this.supplier, category: this.category } ,'top' );
 
-    this.displaySidebar = false
+    this.displaySidebar = false;
   }
 
   private setGridOptions(): void {

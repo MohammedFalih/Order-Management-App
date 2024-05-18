@@ -17,6 +17,7 @@ import { AnalyticsComponent } from './analytics/analytics.component';
 import { CustomersComponent } from './customers/customers.component';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { FinanceComponent } from './finance/finance.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
 
@@ -57,7 +58,8 @@ const routes: Routes = [
         SohoLocaleInitializerModule,
         SohoComponentsModule,
         HttpClientModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
     ]
 })
 export class AppModule { }

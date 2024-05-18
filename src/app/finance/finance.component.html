@@ -55,7 +55,8 @@
               type="radio"
               id="value-1"
               name="value-radio"
-              value="value-1"
+              value="false"
+              [(ngModel)]="paid"
             />
             <span class="text-4xl">Payable</span>
           </label>
@@ -65,6 +66,7 @@
               id="value-2"
               name="value-radio"
               value="value-2"
+              [(ngModel)]="paid"
             />
             <span class="text-4xl">Paid</span>
           </label>
@@ -132,7 +134,7 @@
                 </div>
               </div>
               <div class="button flex justify-end mt-36 px-8 h-20">
-                <button class="mr-8" soho-button="secondary">Cancel</button>
+                <button class="mr-8" (click)="this.showSidebar()" soho-button="secondary">Cancel</button>
                 <button  soho-button="primary" (click)="addExpense()">Add Expense</button>
               </div>
             </div>
