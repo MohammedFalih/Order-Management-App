@@ -64,7 +64,7 @@
   height: 60px;
   margin-bottom: 8px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
 }
 
@@ -78,9 +78,7 @@
   background-color: darkgrey;
 }
 
-#del-img {
-  height: 24px;
-}
+
 
 .cart-item {
   width: 100%;

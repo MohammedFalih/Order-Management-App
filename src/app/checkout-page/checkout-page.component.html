@@ -21,8 +21,9 @@
             soho-spinbox
             min="0"
             max="8"
-            [(ngModel)]="item.quantity"
-            (change)="change($event, item)"
+            [ngModel]="customerProductQuantity(item.id)"
+            (ngModelChange)="item.quantity = $event; addItemToCart(item)"
+
           />
           <label for="checkbox{{ i }}" class="checkbox-label">
             <span class="audible">Select</span>
@@ -57,12 +58,12 @@
             <span>{{selectedCustomer.length>0 ? selectedCustomer : 'Select Customer'}}</span>
           </button>
           <ul class="popupmenu">
-            <li *ngFor="let user of customers"><a (click)="onSelected(user.name)" href="#">{{user.name}}</a></li>
+            <li *ngFor="let user of customers"><a (click)="onSelected(user.name)">{{user.name}}</a></li>
           </ul>
         </soho-toolbar-flex-section>
       </soho-toolbar-flex>
     </div>
-    <div class="ex" *ngIf="selectedProduct.length === 0">
+    <div class="ex" *ngIf="customerProducts[selectedCustomer]?.length === 0">
       <div class="cart-in">
         <img
           class="empty-cart"
@@ -79,7 +80,7 @@
         </div>
       </div>
     </div>
-    <div class="cart-item" *ngIf="selectedProduct.length > 0">
+    <div class="cart-item" *ngIf="selectedCustomer && customerProducts[selectedCustomer]?.length > 0">
       <div class="card" style="height: 470px; margin-top: 40px;">
         <div class="card-header">
           <h2 class="card-title">Selected Items</h2>
@@ -88,7 +89,7 @@
           <soho-listview>
             <li
               soho-listview-item
-              *ngFor="let item of selectedProduct"
+              *ngFor="let item of customerProducts[selectedCustomer]"
               class="list"
             >
               <div class="one">
@@ -106,7 +107,7 @@
                 <button
                   soho-button="icon"
                   icon="delete"
-                  (click)="removeItem(item)"
+                  (click)="removeProduct(item)"
                 ></button>
               </div>
             </li>
@@ -138,12 +139,13 @@
             </div>
           </div>
           <div class="buttons">
-            <button id="del-btn">
+            <button (click)="clearItems()" class="bg-green-300 mr-4 w-56 flex align-middle justify-center rounded-xl">
               <img
                 id="del-img"
                 (click)="clearItems()"
                 src="../../assets/delete.png"
                 alt="delete"
+                class="h-full py-4 bg red"
               />
             </button>
             <button id="pay-btn" soho-button="primary">Go to payment</button>

@@ -22,6 +22,7 @@ export class CheckoutPageComponent implements OnInit {
   totalQuantity?: number;
   customers = Dataset;
   selectedCustomer: string = '';
+  customerProducts: { [key: string]: any[] } = {};
 
   constructor(private products: ApiServiceService) {
 
@@ -29,7 +30,6 @@ export class CheckoutPageComponent implements OnInit {
   ngOnInit(): void {
     this.displayProducts()
   }
-
   private displayProducts() {
     this.busyIndicator?.open();
 
@@ -39,8 +39,55 @@ export class CheckoutPageComponent implements OnInit {
     }, 3000);
   }
 
+  onSelected(customerName: string) {
+    this.selectedCustomer = customerName;
+    if (!this.customerProducts[customerName]) {
+      this.customerProducts[customerName] = [];
+    }
+  }
+
+  addItemToCart(product: any) {
+    let customerCart = this.customerProducts[this.selectedCustomer]
+    let addedProduct = customerCart.find((item: any) => item.id === product.id)
+    if (this.selectedCustomer) {
+      if (addedProduct) {
+        addedProduct.quantity = product.quantity
+      } else {
+        this.customerProducts[this.selectedCustomer].push(product)
+      }
+      this.calculateTotals();
+      console.log(this.customerProducts);
+    }
+  }
+
+  removeProduct(product: any) {
+    let removeProduct = this.customerProducts[this.selectedCustomer].findIndex((item: any) => item.id === product.id)
+    if (this.selectedCustomer) {
+      if (removeProduct != -1) {
+        this.customerProducts[this.selectedCustomer][removeProduct].quantity = 0;
+        this.customerProducts[this.selectedCustomer].splice(removeProduct, 1)
+      }
+    }
+    this.calculateTotals()
+  }
+
+  customerProductQuantity(productId: any) {
+    if (!this.selectedCustomer) return 0;
+    let customerCart = this.customerProducts[this.selectedCustomer];
+    let product = customerCart.find((item: any) => item.id === productId);
+    return product ? product.quantity : 0;
+  }
+
+  clearItems() {
+    let customerCart = this.customerProducts[this.selectedCustomer];
+    customerCart.forEach((product: any) => product.quantity = 0);
+    customerCart = [];
+    this.calculateTotals()
+  }
+
   change(event: SohoSpinboxEvent, item: any) {
 
+    this.addItemToCart(item)
     item.quantity = event;
 
     const exist = this.selectedProduct.find((p: any) => p.id === item.id);
@@ -61,7 +108,7 @@ export class CheckoutPageComponent implements OnInit {
     let totalPrice = 0;
     let totalQuantity = 0;
 
-    this.selectedProduct.forEach((product: any) => {
+    this.customerProducts[this.selectedCustomer].forEach((product: any) => {
       totalPrice += parseFloat(product.price.replace('$', '')) * product.quantity;
       totalQuantity += Number(product.quantity);
     });
@@ -69,8 +116,8 @@ export class CheckoutPageComponent implements OnInit {
     this.totalPrice = totalPrice;
     this.totalQuantity = totalQuantity;
 
-    console.log(this.totalPrice);
-    console.log(this.totalQuantity);
+    // console.log(this.totalPrice);
+    // console.log(this.totalQuantity);
   }
 
   removeItem(product: any) {
@@ -80,17 +127,6 @@ export class CheckoutPageComponent implements OnInit {
       this.selectedProduct.splice(index, 1);
       this.calculateTotals()
     }
-  }
-
-  clearItems() {
-   this.selectedProduct.forEach((product) =>{
-    product.quantity = 0;
-   })
-   this.selectedProduct = []
-  }
-
-  onSelected(name: string) {
-    this.selectedCustomer = name;
   }
 
 }
