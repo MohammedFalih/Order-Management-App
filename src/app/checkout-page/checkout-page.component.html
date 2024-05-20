@@ -63,7 +63,7 @@
         </soho-toolbar-flex-section>
       </soho-toolbar-flex>
     </div>
-    <div class="ex" *ngIf="customerProducts[selectedCustomer]?.length === 0">
+    <div class="ex" *ngIf="customerProducts?.length === 0">
       <div class="cart-in">
         <img
           class="empty-cart"
@@ -80,7 +80,7 @@
         </div>
       </div>
     </div>
-    <div class="cart-item" *ngIf="selectedCustomer && customerProducts[selectedCustomer]?.length > 0">
+    <div class="cart-item" *ngIf="selectedCustomer && customerProducts?.length > 0">
       <div class="card" style="height: 470px; margin-top: 40px;">
         <div class="card-header">
           <h2 class="card-title">Selected Items</h2>
@@ -89,7 +89,7 @@
           <soho-listview>
             <li
               soho-listview-item
-              *ngFor="let item of customerProducts[selectedCustomer]"
+              *ngFor="let item of customerProducts"
               class="list"
             >
               <div class="one">
@@ -148,7 +148,7 @@
                 class="h-full py-4 bg red"
               />
             </button>
-            <button id="pay-btn" soho-button="primary">Go to payment</button>
+            <button id="pay-btn" [routerLink]="['/sell/payment']" soho-button="primary">Go to payment</button>
           </div>
         </soho-card>
       </div>

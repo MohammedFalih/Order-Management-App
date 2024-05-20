@@ -1,0 +1,160 @@
+<div class="h-full w-full">
+  <div class="row top-padding main h-full">
+    <div soho-toolbar-flex class="mx-auto bg-slate-200 h-auto rounded-xl">
+      <soho-toolbar-flex-section class="">
+        <div class="flex gap-3 py-5 px-4 items-center">
+          <button>
+            <img
+              style="height: 24px; width: 24px"
+              src="../../assets/back.png"
+              alt="back"
+              [routerLink]="['/sell']"
+            />
+          </button>
+          <h2 class="text-7xl font-bold text-black">Payments</h2>
+        </div>
+      </soho-toolbar-flex-section>
+    </div>
+    <div class="w-full flex flex-grow mt-10">
+      <div class="w-1/2 mx-8">
+        <soho-card [autoHeight]="true">
+          <soho-card-header>
+            <h1 class="widget-title">Customer</h1>
+          </soho-card-header>
+          <div class="card-content px-4 py-5">
+            <div
+              class="bg-gray-200 rounded-3xl flex px-10 items-center min-h-28"
+            >
+              <h1 class="text-6xl font-bold font-sans">
+                {{ selectedCustomer }}
+              </h1>
+            </div>
+          </div>
+        </soho-card>
+
+        <soho-card [autoHeight]="true">
+          <soho-card-header>
+            <h1 class="widget-title">Notes</h1>
+          </soho-card-header>
+          <div class="card-content px-4 py-5">
+            <textarea class="w-full"></textarea>
+            <div>
+              <input soho-checkbox type="checkbox" name="notes" id="notes" />
+              <label for="notes">Show on receipt</label>
+            </div>
+          </div>
+        </soho-card>
+
+        <soho-card [autoHeight]="true">
+          <soho-card-header>
+            <h1 class="widget-title">{{totalQuantity}} Items</h1>
+          </soho-card-header>
+          <div class="card-content px-4 py-5" style="height: 350px;">
+            <soho-listview>
+              <li
+                soho-listview-item
+                *ngFor="let item of customerCartItems"
+                class="list"
+              >
+                <div class="one flex justify-between items-center">
+                  <div class="image flex items-center">
+                    <img class="h-20 w-auto mx-3" src="{{item.image}}" alt="item-image">
+                    <p class="mx-3" soho-tag="primary">{{ item.quantity }}</p>
+                    <p id="head" class="mx-3" soho-listview-header>{{ item.title }}</p>
+                  </div>
+      
+                  <p class="mx-7" soho-listview-subheader>
+                    <span soho-tag="primary">{{ item.price }}</span>
+                  </p>
+                </div>
+              </li>
+            </soho-listview>
+          </div>
+        </soho-card>
+      </div>
+      <div class="w-1/2 mx-8 relative column">
+        <soho-card [autoHeight]="true">
+          <soho-card-header>
+            <h1 class="widget-title">Order Summary</h1>
+          </soho-card-header>
+          <div class="card-content">
+            <div class="total my-4 flex justify-between px-12">
+              <h3 class="text-3xl py-2">Products subtotal</h3>
+              <p class="text-3xl py-2">{{totalPrice | currency}}</p>
+            </div>
+            <div class="discount flex justify-between my-4 px-12">
+              <h3 class="text-3xl py-2">Discounts</h3>
+              <p class="text-2xl py-2">Add Discount</p>
+            </div>
+            <div class="my-5 px-12 flex justify-between">
+              <h1 class="text-5xl font-bold py-4">Total</h1>
+              <h1 class="font-bold text-5xl py-4">{{totalPrice | currency}}</h1>
+            </div>
+            
+          </div>
+        </soho-card>
+        <soho-card [autoHeight]="true">
+          <soho-card-header>
+            <h1 class="widget-title">Select the payment method</h1>
+          </soho-card-header>
+          <div class="card-content">
+            <div class="methods py-6">
+              <div class="my-2 mx-12">
+                <form>
+                  <input
+                    soho-radiobutton
+                    id="cash"
+                    type="radio"
+                    name="payment-method"
+                    value="cash"
+                  />
+                  <label soho-label for="cash" [forRadioButton]="true"
+                    >💵 Cash</label
+                  >
+                  <br />
+                  <input
+                    type="radio"
+                    soho-radiobutton
+                    id="debit"
+                    name="payment-method"
+                    value="debit"
+                  />
+                  <label soho-label for="debit" [forRadioButton]="true"
+                    >💳 Debit card</label
+                  >
+                  <br />
+                  <input
+                    type="radio"
+                    soho-radiobutton
+                    id="credit"
+                    name="payment-method"
+                    value="credit"
+                  />
+                  <label soho-label for="credit" [forRadioButton]="true"
+                    >💳 Credit card</label
+                  >
+                  <br />
+                  <input
+                    type="radio"
+                    soho-radiobutton
+                    id="others"
+                    name="payment-method"
+                    value="others"
+                  />
+                  <label soho-label for="others" [forRadioButton]="true"
+                    >Others</label
+                  >
+                  <br />
+                </form>
+              </div>
+            </div>
+          </div>
+        </soho-card>
+        <div class="button absolute bottom-0 right-0 h-32 flex items-center justify-evenly w-96">
+          <button soho-button="secondary" (click)="save()">Save Order</button>
+          <button soho-button="primary">Finish Sale</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

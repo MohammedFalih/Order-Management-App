@@ -18,15 +18,16 @@ import { CustomersComponent } from './customers/customers.component';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { FinanceComponent } from './finance/finance.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
-
-    { path: 'sell', component: CheckoutPageComponent },
+    { path: 'sell', component: CheckoutPageComponent},
     { path: 'product', component: ProductComponent },
     { path: 'analytics', component: AnalyticsComponent },
     { path: 'customers', component: CustomersComponent },
     { path: 'user-info/:name', component: UserInfoComponent },
-    { path: 'finance', component: FinanceComponent },
+    { path: 'finance', component: FinanceComponent },   
+    { path: 'sell/payment', component: PaymentComponent }
 ]
 
 @NgModule({
@@ -40,7 +41,8 @@ const routes: Routes = [
         AnalyticsComponent,
         CustomersComponent,
         UserInfoComponent,
-        FinanceComponent
+        FinanceComponent,
+        PaymentComponent
     ],
     providers: [
         {

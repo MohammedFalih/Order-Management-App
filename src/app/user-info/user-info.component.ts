@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../customers/customers.component';
 import { ActivatedRoute } from '@angular/router';
 import { CustomerService } from './customer.service';
 import { SohoToastService } from 'ids-enterprise-ng';
